@@ -1,0 +1,57 @@
+1. SELECT LabelName FROM LABEL;
+
+2. SELECT * FROM GENRE
+order by GenreName;
+
+3. SELECT ArtistName, ArtistID 
+FROM ARTIST
+Order by ArtistName;
+
+4. SELECT * FROM ALBUM;
+
+5. SELECT * FROM SONG
+where not GenreID = 8;
+
+6. SELECT * FROM GroupSong;
+7. SELECT * FROM GROUPS;
+
+8. SELECT * 
+   FROM ALBUM
+   ORDER BY ArtistID;
+   
+9. SELECT AlbumName
+   FROM ALbum
+   WHERE TotalSongs = 10;
+   
+10. SELECT Distinct a.ArtistID, a.ArtistName, b.LabelID
+FROM Artist as a inner join Album as b on a.ArtistID = b.ArtistID
+where LabelID = 'SMR'
+Order By ArtistName;
+
+11. Select Distinct s.SongName, max(TotalSongs) as MaxAlbumSongs, min(TotalSongs) as MinAlbumSongs
+from Album as a inner join SONG as s on
+a.AlbumID = s.AlbumID
+Where ArtistID = 2
+Group By SongName;
+
+12. Select SongName
+from Song as s inner join GroupSong as g on
+s.SongID = g.SongID
+Where GroupID = 2;
+
+13. SELECT sum(TotalSongs) as Number_Of_Pop_Songs
+FROM Album as a inner join Song as s on a.AlbumID = s.AlbumID
+WHERE GenreID = 8;
+
+14. Select Distinct ar.ArtistName, a.AlbumName, s.SongName, gr.GroupName 
+FROM Album as a inner join Artist as ar on a.ArtistID = ar.ArtistID
+inner join Song as s on a.AlbumID = s.AlbumID
+inner join Groups as gr on ar.ArtistID = gr.ArtistID
+inner join GroupSong as gs on gr.GroupID = gs.GroupID
+Where GenreID = 7 ;
+
+15. SELECT Distinct a.AlbumName, ar.ArtistName, g.GenreName
+FROM Album as a inner join Artist as ar on a.ArtistID = ar.ArtistID
+inner join Song as s on a.AlbumID = s.AlbumID
+inner join Genre as g on s.GenreID = g.GenreID
+WHERE TotalSongs > 8 ;
